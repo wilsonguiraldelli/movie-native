@@ -11,7 +11,9 @@ function setContainer(container) {
 
 function dispatch(action) {
   if (!instance) {
-    throw new Error('[NavigatorService] Trying to dispatch task to container when there is no container...');
+    throw new Error(
+      '[NavigatorService] Trying to dispatch task to container when there is no container...'
+    );
   }
 
   return instance.dispatch(action);
@@ -31,15 +33,17 @@ function getRouteNameFromState(navigationState) {
 }
 
 function reset(routeName, params = {}) {
-  dispatch(CommonActions.reset({
-    index: 0,
-    routes: [
-      {
-        name: routeName,
-        params,
-      },
-    ],
-  }));
+  dispatch(
+    CommonActions.reset({
+      index: 0,
+      routes: [
+        {
+          name: routeName,
+          params,
+        },
+      ],
+    })
+  );
 }
 
 function replace(routeName, params) {
@@ -51,22 +55,27 @@ function replace(routeName, params) {
 }
 
 function navigate(routeName, params) {
-  dispatch(CommonActions.navigate({
-    name: routeName,
-    params,
-  }));
+  dispatch(
+    CommonActions.navigate({
+      name: routeName,
+      params,
+    })
+  );
 }
 
 function navigateDeep(actions) {
-  dispatch(actions.reduceRight(
-    (prevAction, action) => CommonActions.navigate({
-      type: 'Navigation/NAVIGATE',
-      routeName: action.routeName,
-      params: action.params,
-      action: prevAction,
-    }),
-    undefined,
-  ));
+  dispatch(
+    actions.reduceRight(
+      (prevAction, action) =>
+        CommonActions.navigate({
+          type: 'Navigation/NAVIGATE',
+          routeName: action.routeName,
+          params: action.params,
+          action: prevAction,
+        }),
+      undefined
+    )
+  );
 }
 
 function back(key = null) {

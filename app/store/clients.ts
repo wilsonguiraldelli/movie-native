@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import axios, {
   AxiosInstance,
   AxiosRequestConfig,
@@ -6,10 +5,9 @@ import axios, {
   AxiosError,
 } from 'axios';
 import { Store } from 'redux';
-
+import { RootState } from 'typesafe-actions';
 // @ts-ignore
 import { BASE_URL } from '@env';
-
 export interface ClientsList {
   [name: string]: { client: AxiosInstance; options: object };
   default: { client: AxiosInstance; options: object };
@@ -26,7 +24,7 @@ const clients: ClientsList = {
       returnRejectedPromiseOnError: true,
       interceptors: {
         request: [
-          (config: AxiosRequestConfig) => ({
+          ({ getState }: Store<RootState>, config: AxiosRequestConfig) => ({
             ...config,
             headers: {
               ...(config.headers || {}),
@@ -37,8 +35,8 @@ const clients: ClientsList = {
         ],
         response: [
           {
-            success: (_store: Store, response: AxiosResponse) => response,
-            error: (_store: Store, error: AxiosError) => {
+            success: (_store: Store<RootState>, response: AxiosResponse) => response,
+            error: (_store: Store<RootState>, error: AxiosError) => {
               console.error(error);
               console.dir(error);
               return Promise.reject(error);

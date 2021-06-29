@@ -1,16 +1,18 @@
 import * as React from 'react';
 
-import { StatusBar, View, Text } from 'react-native';
-import { connect } from 'react-redux';
+import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as Navigator from 'services/navigator';
 
-import { ListContainer as MovieListContainer } from 'movies/containers';
+import {
+  ListContainer as MovieListContainer,
+  DetailsContainer as MovieDetailsContainer,
+} from 'movies/containers';
 
 const Stack = createStackNavigator();
 
-const Router: React.FC = (props) => (
+const Router: React.FC = () => (
   <React.Fragment>
     <StatusBar backgroundColor="#FFF" barStyle="dark-content" />
     <NavigationContainer
@@ -21,20 +23,14 @@ const Router: React.FC = (props) => (
       }}
     >
       <Stack.Navigator
-        initialRouteName="MoviesList"
+        initialRouteName="movies-list"
+        headerMode="none"
       >
-        <Stack.Screen name="MoviesList" component={MovieListContainer} />
+        <Stack.Screen name="movies-list" component={MovieListContainer} />
+        <Stack.Screen name="movies-details" component={MovieDetailsContainer} />
       </Stack.Navigator>
     </NavigationContainer>
   </React.Fragment>
 );
 
-const mapStateToProps = () => ({
-
-});
-
-const mapDispatchToProps = {
-
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Router);
+export default Router;
