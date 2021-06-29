@@ -28,7 +28,7 @@ export default function Field(props: Props): React.ReactElement {
         value={value}
         style={styles.text_input}
         onFocus={props.onFocus}
-
+        placeholderTextColor={Colors.white}
       />
       <If condition={!!value}>
         <IconButton
