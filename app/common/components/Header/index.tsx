@@ -21,15 +21,26 @@ export default function Header(props: Props): React.ReactElement {
               <IconButton
                 icon="chevron-left"
                 size={32}
-                style={styles.icon}
+                style={styles.left_icon}
                 onPress={() => navigation.goBack()}
               />
             </If>
             <Text style={styles.title}>
               {props.title}
             </Text>
+            <If condition={!!props.handlePressSearch}>
+              <IconButton
+                icon="magnify"
+                size={32}
+                style={styles.right_icon}
+                onPress={() => props.handlePressSearch
+                  ? props.handlePressSearch()
+                  : () => { }
+                }
+              />
+            </If>
           </View>
-          <If condition={!props.disableSearch}>
+          <If condition={!!props?.onChange}>
             <View>
               <Field
                 placeholder="Search for a movie"

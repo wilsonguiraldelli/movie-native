@@ -5,5 +5,5 @@ export type Props = {
   isLoading: boolean,
   handlePagination: () => void,
   handleSelectMovie: (movie: Movie) => void,
-  handleSearch: (value: string) => void,
+  handlePressSearch: () => void,
 }

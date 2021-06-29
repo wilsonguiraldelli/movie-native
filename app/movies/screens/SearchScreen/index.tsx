@@ -1,22 +1,19 @@
 import * as React from 'react';
+import { Text, IconButton, Colors, ActivityIndicator } from 'react-native-paper';
 import { Header, If } from 'common/components';
-import { FlatList, View } from 'react-native';
 import { MovieCard } from 'movies/components';
-import { ActivityIndicator, Text } from 'react-native-paper';
-import { DateTime } from 'luxon'
 
 import { Props } from './types'
 import styles from './styles'
+import { View, FlatList } from 'react-native';
 
-function ListScreen(props: Props): React.ReactElement {
-
-  const formatDate = (date: string) => DateTime.fromFormat(date, 'yyyy-MM-dd').toFormat('MM/dd/yyyy')
-
+function SearchScreen(props: Props): React.ReactElement {
   return (
     <React.Fragment>
       <Header
-        title="Upcoming Movies"
-        handlePressSearch={props.handlePressSearch}
+        title="Search"
+        mustGoBack
+        onChange={props.handleSearch}
       />
       <View style={styles.container}>
         <If condition={props.isLoading && !props.data.results.length}>
@@ -27,13 +24,6 @@ function ListScreen(props: Props): React.ReactElement {
         </If>
         <If condition={!!props.data.results.length}>
           <React.Fragment>
-            <View style={styles.info_text_container}>
-              <Text
-                style={styles.info_text}
-              >
-                {`Upcoming movies from ${formatDate(props.data.dates.minimum || '')} to ${formatDate(props.data.dates.maximum || '')}`}
-              </Text>
-            </View>
             <FlatList
               contentContainerStyle={styles.content}
               keyExtractor={(movie, index) => `${movie.id}-${index}`}
@@ -58,4 +48,4 @@ function ListScreen(props: Props): React.ReactElement {
   )
 }
 
-export default ListScreen;
+export default SearchScreen;

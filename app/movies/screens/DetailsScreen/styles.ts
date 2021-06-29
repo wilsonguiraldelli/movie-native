@@ -8,6 +8,18 @@ export default StyleSheet.create({
     padding: 16,
   },
 
+  image_container: {
+    justifyContent: 'center', alignItems: 'center', marginTop: 24, marginBottom: 16
+  },
+
+  image: {
+    width: 150, height: 300, borderRadius: 6,
+  },
+
+  title: {
+    fontWeight: 'bold', fontSize: 18, marginTop: 16
+  },
+
   subtitle: {
     fontWeight: 'bold',
     marginBottom: 4,

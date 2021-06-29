@@ -5,7 +5,7 @@ export type MoviesResponse = {
     maximum?: string,
     minimum?: string,
   },
-  pages_total?: Number,
+  total_pages?: Number,
   total_results?: Number,
 }
 
@@ -24,4 +24,11 @@ export type Movie = {
   vote_count: Number,
   video: boolean,
   vote_average: Number,
+}
+
+export type SearchResponse = {
+  page?: Number,
+  results: Movie[],
+  total_pages?: Number,
+  total_results?: Number,
 }

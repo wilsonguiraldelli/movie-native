@@ -16,7 +16,8 @@ export default StyleSheet.create({
   title: {
     fontSize: 28,
     color: '#FFF',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    flex: 1,
   },
 
   title_container: {
@@ -24,5 +25,12 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
 
-  icon: { margin: 0, marginRight: 8 },
+  right_icon: {
+    margin: 0,
+  },
+
+  left_icon: {
+    margin: 0,
+    marginRight: 8
+  },
 })

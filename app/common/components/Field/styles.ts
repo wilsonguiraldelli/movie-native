@@ -7,15 +7,19 @@ export default StyleSheet.create({
     backgroundColor: '#1C1C1E',
     borderRadius: 10,
     marginVertical: 16,
+    alignItems: 'center',
   },
 
   left_icon: {
     margin: 0,
-    marginRight: 4,
+  },
+
+  rigth_icon: {
+    margin: 0,
   },
 
   text_input: {
     color: Colors.white,
-    width: '100%'
+    flex: 1,
   }
 })

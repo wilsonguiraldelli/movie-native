@@ -1,5 +1,6 @@
 export type Props = {
   leftIcon?: string,
   placeholder?: string,
-  onChange: (string) => void,
+  onChange: (value: string) => void,
+  onFocus?: (e: any) => void,
 }

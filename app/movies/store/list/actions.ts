@@ -20,7 +20,7 @@ export const upcoming = createAsyncAction(
   ['MOVIES/LIST/GET_UPCOMING', (page: Number): RequestPayload => ({
     request: {
       method: 'GET',
-      url: `/upcoming${upcomingQueryString(page)}`,
+      url: `/movie/upcoming${upcomingQueryString(page)}`,
     },
   })],
   ['MOVIES/LIST/GET_UPCOMING_SUCCESS', (response: AxiosResponse<{}>): AxiosResponse<{}> => response],

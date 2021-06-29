@@ -29,9 +29,11 @@ export default function MovieCard(props: Props): React.ReactElement {
         <Text style={styles.title}>
           {props.title}
         </Text>
-        <Text style={{ fontSize: 12 }}>
-          {`Release Date: ${DateTime.fromFormat(props.release_date, 'yyyy-MM-dd').toFormat('MM/dd/yyyy')}`}
-        </Text>
+        <If condition={!!props.release_date}>
+          <Text style={{ fontSize: 12 }}>
+            {`Release Date: ${DateTime.fromFormat(props.release_date || '', 'yyyy-MM-dd').toFormat('MM/dd/yyyy')}`}
+          </Text>
+        </If>
       </View>
 
       <View style={styles.vote_average_container}>

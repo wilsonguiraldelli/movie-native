@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 
 import { list as thunkList } from 'movies/store/thunks';
-import { list, details } from 'movies/store/actions';
+import { list, details, search } from 'movies/store/actions';
 
 import { Movie, MoviesResponse } from 'movies/types';
 
@@ -31,8 +31,9 @@ function ListContainer(): React.ReactElement {
     navigation.navigate('movies-details')
   }
 
-  const handleSearch = (value: string) => {
-    console.log('VALUE', value);
+  const handlePressSearch = () => {
+    navigation.navigate('movies-search')
+    dispatch(search.reset())
   }
 
   useEffect(() => {
@@ -45,7 +46,7 @@ function ListContainer(): React.ReactElement {
       data={data}
       handlePagination={handlePagination}
       handleSelectMovie={handleSelectMovie}
-      handleSearch={handleSearch}
+      handlePressSearch={handlePressSearch}
     />
   )
 }
